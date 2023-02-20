@@ -1,11 +1,43 @@
 <div class="container">
   <p class="title">Input Your Details</p>
+
   <div class="form-container">
-    <input id="form-input" title="Full Name: " placeholder="Name" />
-    <input id="form-input" title="Age: " placeholder="Age" />
-    <input id="form-input" title="Occupation: " placeholder="Occupation" />
+    <input
+      class="form-input"
+      type="text"
+      title="Full Name: "
+      placeholder="Name"
+      id="name"
+      name="name"
+      [(ngModel)]="name"
+    />
+    <input
+      class="form-input"
+      type="number"
+      title="Age: "
+      placeholder="Age"
+      id="age"
+      name="age"
+      [(ngModel)]="age"
+    />
+    <input
+      class="form-input"
+      type="text"
+      title="Occupation: "
+      placeholder="Occupation"
+      id="occupation"
+      name="occupation"
+      [(ngModel)]="occupation"
+    />
   </div>
   <div class="button-container">
     <app-button text="Submit" (btnClick)="onSubmitForm()"></app-button>
   </div>
+</div>
+
+<div class="card" *ngIf="responseName">
+  <p class="title">Successful!</p>
+  <label class="labels">Name: {{ responseName }}</label>
+  <label class="labels">Age: {{ responseAge }}</label>
+  <label class="labels">Occupation: {{ responseOcc }}</label>
 </div>

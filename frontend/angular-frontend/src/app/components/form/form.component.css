@@ -1,0 +1,17 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 200px;
+  border: 1px solid green;
+  margin: 30px;
+  border-radius: 5px;
+  padding: 20px;
+}
+.title {
+  text-align: center;
+  color: green;
+}
+.labels {
+  padding: 10px 5px;
+}
