@@ -44,5 +44,10 @@ export class FormComponent {
       this.responseAge = users.age;
       this.responseOcc = users.occupation;
     });
+
+    //Clear form data
+    this.name = '';
+    this.age = '';
+    this.occupation = '';
   }
 }
