@@ -8,46 +8,47 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class FormComponent {
   @Output() onSubmitUser = new EventEmitter();
-  name: string = '';
-  age: string = '';
-  occupation: string = '';
+  firstNumber: number | undefined;
+  secondNumber: number | undefined;
+  operation: string = '';
 
-  responseName: string = '';
-  responseAge: string = '';
-  responseOcc: string = '';
+  result: number | undefined;
 
   constructor(private userService: UserService) {}
 
   onSubmitForm() {
     //Adding basic validation
-    if (!this.name) {
-      alert('Please add name');
-      return;
-    }
-    if (!this.age) {
-      alert('Please add age');
-      return;
-    }
-    if (!this.occupation) {
-      alert('Please add occupation');
+    if (this.secondNumber == 0 && this.operation === '/') {
+      alert('Division by zero error');
       return;
     }
 
-    const newUser = {
-      name: this.name,
-      age: this.age,
-      occupation: this.occupation,
+    if (!this.firstNumber) {
+      alert('Please enter number');
+      return;
+    }
+    if (!this.secondNumber) {
+      alert('Please enter number');
+      return;
+    }
+    if (!this.operation) {
+      alert('Please enter operation');
+      return;
+    }
+
+    const method = {
+      firstNumber: this.firstNumber,
+      secondNumber: this.secondNumber,
+      operation: this.operation,
     };
 
-    this.userService.addUser(newUser).subscribe((users) => {
-      this.responseName = users.name;
-      this.responseAge = users.age;
-      this.responseOcc = users.occupation;
+    this.userService.fetchCalculation(method).subscribe((res) => {
+      this.result = parseFloat(res);
     });
 
     //Clear form data
-    this.name = '';
-    this.age = '';
-    this.occupation = '';
+    this.firstNumber = undefined;
+    this.secondNumber = undefined;
+    this.operation = '';
   }
 }

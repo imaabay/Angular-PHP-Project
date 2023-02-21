@@ -1,5 +1,5 @@
-export interface User {
-  name: string;
-  age: string;
-  occupation: string;
+export interface Calculation {
+  firstNumber: number;
+  secondNumber: number;
+  operation: string;
 }

@@ -3,9 +3,29 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-$json = file_get_contents('php://input');
-$data = json_decode($json, true);
+$data = json_decode(file_get_contents("php://input"));
 
-echo json_encode($data);
+function calculator($num1, $num2, $opt) {
+  switch($opt) {
+    case '+':
+      $value = $num1 + $num2;
+      break;
+    case '-':
+      $value = $num1 - $num2;
+      break;
+    case '*':
+      $value = $num1 * $num2;
+      break;
+    case '/':
+      $value = $num1 / $num2;
+      break;
+    default:
+      break;
+  }
+  return $value;
+}
 
+$result = calculator($data->firstNumber, $data->secondNumber, $data->operation);
+
+echo json_encode($result);
 ?>

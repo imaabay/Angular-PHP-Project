@@ -1,43 +1,75 @@
 <div class="container">
-  <p class="title">Input Your Details</p>
+  <p class="title">Input Values</p>
 
   <div class="form-container">
     <input
       class="form-input"
-      type="text"
-      title="Full Name: "
-      placeholder="Name"
+      type="number"
+      placeholder="Enter first number"
       id="name"
       name="name"
-      [(ngModel)]="name"
+      [(ngModel)]="firstNumber"
     />
     <input
       class="form-input"
       type="number"
-      title="Age: "
-      placeholder="Age"
+      placeholder="Enter second number"
       id="age"
       name="age"
-      [(ngModel)]="age"
+      [(ngModel)]="secondNumber"
     />
-    <input
-      class="form-input"
-      type="text"
-      title="Occupation: "
-      placeholder="Occupation"
-      id="occupation"
-      name="occupation"
-      [(ngModel)]="occupation"
-    />
+    <label id="opTitle">Select operation</label>
+    <div>
+      <input
+        class="radio-button"
+        type="radio"
+        id="addition"
+        name="addition"
+        value="+"
+        [(ngModel)]="operation"
+      />
+      <label for="html" class="operationType">Addition</label><br />
+    </div>
+    <div>
+      <input
+        class="radio-button"
+        type="radio"
+        id="subtraction"
+        name="subtraction"
+        value="-"
+        [(ngModel)]="operation"
+      />
+      <label for="html">Subtraction</label><br />
+    </div>
+    <div>
+      <input
+        class="radio-button"
+        type="radio"
+        id="multiplication"
+        name="multiplication"
+        value="*"
+        [(ngModel)]="operation"
+      />
+      <label for="html">Multiplication</label><br />
+    </div>
+    <div>
+      <input
+        class="radio-button"
+        type="radio"
+        id="division"
+        name="division"
+        value="/"
+        [(ngModel)]="operation"
+      />
+      <label for="html">Division</label><br />
+    </div>
   </div>
   <div class="button-container">
     <app-button text="Submit" (btnClick)="onSubmitForm()"></app-button>
   </div>
 </div>
 
-<div class="card" *ngIf="responseName">
+<div class="card" *ngIf="result || result == 0">
   <p class="title">Successful!</p>
-  <label class="labels">Name: {{ responseName }}</label>
-  <label class="labels">Age: {{ responseAge }}</label>
-  <label class="labels">Occupation: {{ responseOcc }}</label>
+  <label class="labels">Result: {{ result }}</label>
 </div>

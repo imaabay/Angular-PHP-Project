@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { User } from '../constants/types';
+import { Calculation } from '../constants/types';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +19,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  addUser(user: User): Observable<User> {
-    return this.http.post<User>(this.api, user, httpOptions);
+  fetchCalculation(cal: Calculation): Observable<string> {
+    return this.http.post<string>(this.api, cal, httpOptions);
   }
 }
