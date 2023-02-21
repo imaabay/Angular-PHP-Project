@@ -19,7 +19,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  fetchCalculation(cal: Calculation): Observable<string> {
+  fetchCalculation(cal: string): Observable<string> {
     return this.http.post<string>(this.api, cal, httpOptions);
   }
 }

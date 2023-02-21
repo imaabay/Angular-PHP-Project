@@ -42,9 +42,11 @@ export class FormComponent {
       operation: this.operation,
     };
 
-    this.userService.fetchCalculation(method).subscribe((res) => {
-      this.result = parseFloat(res);
-    });
+    this.userService
+      .fetchCalculation(JSON.stringify(method))
+      .subscribe((res) => {
+        this.result = parseFloat(res);
+      });
 
     //Clear form data
     this.firstNumber = undefined;
